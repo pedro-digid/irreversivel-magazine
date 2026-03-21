@@ -59,6 +59,8 @@ export default defineConfig({
     wordpressHotFile(),
   ],
 
+  base: './',
+
   build: {
     outDir: resolve(__dirname, 'dist'),
     emptyOutDir: true,
