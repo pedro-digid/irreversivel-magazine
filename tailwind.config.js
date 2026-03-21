@@ -13,6 +13,10 @@ module.exports = {
       center: true,
       padding: '1.5rem',
     },
+    fontFamily: {
+      sans: ['"DM Sans Variable"', 'system-ui', 'sans-serif'],
+      display: ['"Space Grotesk Variable"', 'system-ui', 'sans-serif'],
+    },
     extend: {
       colors: {
         bg: 'var(--color-bg)',

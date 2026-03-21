@@ -151,6 +151,20 @@ remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 /**
+ * Clean up wp_head() — remove unnecessary meta tags and links.
+ */
+remove_action( 'wp_head', 'wp_generator' );
+remove_action( 'wp_head', 'rsd_link' );
+remove_action( 'wp_head', 'wlwmanifest_link' );
+remove_action( 'wp_head', 'wp_shortlink_wp_head' );
+remove_action( 'wp_head', 'rest_output_link_wp_head' );
+remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+remove_action( 'wp_head', 'wp_resource_hints', 2 );
+
+// Remove comments feed link (keep main RSS feed).
+add_filter( 'feed_links_show_comments_feed', '__return_false' );
+
+/**
  * Disable CF7 asset loading globally — re-enabled per page in irrev_mag_scripts().
  */
 add_filter( 'wpcf7_load_js', '__return_false' );

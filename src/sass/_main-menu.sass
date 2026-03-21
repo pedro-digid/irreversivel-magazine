@@ -1,0 +1,10 @@
+#primary-menu,
+#primary-menu ul
+  @apply flex items-center gap-x-4
+  li
+    a
+      @apply font-display uppercase
+
+    &:not(:last-child)::after
+      content: "/"
+      @apply ml-4 text-slate-500 opacity-50

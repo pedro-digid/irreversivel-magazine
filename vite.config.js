@@ -13,14 +13,7 @@ function wordpressPhpReload() {
     name: 'wordpress-php-reload',
 
     configureServer(server) {
-      const phpPaths = [
-        resolve(__dirname, '*.php'),
-        resolve(__dirname, 'inc/**/*.php'),
-        resolve(__dirname, 'template-parts/**/*.php'),
-        resolve(__dirname, 'page-templates/**/*.php'),
-      ];
-
-      phpPaths.forEach((p) => server.watcher.add(p));
+      server.watcher.add(resolve(__dirname, '**/*.php'));
 
       server.watcher.on('change', (path) => {
         if (path.endsWith('.php')) {

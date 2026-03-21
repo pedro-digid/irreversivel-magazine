@@ -1,0 +1,28 @@
+// Announcement bar / marquee ticker.
+.announcement-bar
+  &__track
+    display: flex
+    width: max-content
+    will-change: transform
+    animation: marquee 130s linear infinite
+
+  &__group
+    display: flex
+    white-space: nowrap
+
+  &__item
+    display: inline-flex
+    align-items: center
+
+  &__separator
+    @apply text-red-700 opacity-80 mx-3
+
+@keyframes marquee
+  0%
+    transform: translateX(0)
+  100%
+    transform: translateX(-50%)
+
+.site-branding
+  .custom-logo-link
+    @apply block max-w-40

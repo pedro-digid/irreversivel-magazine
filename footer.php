@@ -12,20 +12,29 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer bg-slate-950 text-slate-400 py-4 mt-auto">
+	<footer id="colophon" class="site-footer bg-zinc-950 text-slate-400 py-4 mt-auto">
 		<div class="container">
-			<div class="site-info">
-				<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'im' ) ); ?>">
+			<div class="site-info flex flex-wrap items-center justify-between gap-2 text-sm">
+				<span>
 					<?php
-					/* translators: %s: CMS name, i.e. WordPress. */
-					printf( esc_html__( 'Proudly powered by %s', 'im' ), 'WordPress' );
+					printf(
+						/* translators: 1: Copyright symbol, 2: Current year, 3: Site name. */
+						esc_html__( '%1$s %2$s %3$s. Todos os direitos reservados.', 'im' ),
+						'&copy;',
+						esc_html( date_i18n( 'Y' ) ),
+						esc_html( get_bloginfo( 'name' ) )
+					);
 					?>
-				</a>
-				<span class="sep"> | </span>
+				</span>
+				<span>
 					<?php
-					/* translators: 1: Theme name, 2: Theme author. */
-					printf( esc_html__( 'Theme: %1$s by %2$s.', 'im' ), 'Irreversível Magazine', '<a href="http://underscores.me/">.peter</a>' );
+					printf(
+						/* translators: %s: Developer name/link. */
+						esc_html__( 'Desenvolvido por %s', 'im' ),
+						'<a href="https://irreversivel.pt">.peter</a>'
+					);
 					?>
+				</span>
 			</div><!-- .site-info -->
 		</div>
 	</footer><!-- #colophon -->

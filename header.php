@@ -16,8 +16,6 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
-
 	<script>
 		(function() {
 			var theme = localStorage.getItem('theme');
@@ -33,8 +31,25 @@
 	<?php wp_body_open(); ?>
 
 		<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'im' ); ?></a>
+		<div class="announcement-bar bg-zinc-950 text-zinc-300 text-xs uppercase tracking-widest py-2 overflow-hidden" role="marquee" aria-label="<?php esc_attr_e( 'Anúncios', 'im' ); ?>">
+			<div class="announcement-bar__track">
+				<?php
+				$irrev_mag_items = '';
+				for ( $i = 0; $i < 6; $i++ ) {
+					$irrev_mag_items .= sprintf(
+						'<span class="announcement-bar__item"><span class="text-zinc-300 font-bold mr-1">%1$s</span> %2$s <span class="announcement-bar__separator" aria-hidden="true">&#x2022;</span></span>',
+						esc_html__( 'Brevemente:', 'im' ),
+						esc_html__( 'Uma Noite Irreversível 2026, 14 Outubro', 'im' )
+					);
+				}
 
-		<header id="masthead" class="site-header bg-slate-900 text-white py-4">
+				// Two identical groups — animation slides exactly one group out.
+				?>
+				<span class="announcement-bar__group"><?php echo wp_kses_post( $irrev_mag_items ); ?></span>
+				<span class="announcement-bar__group" aria-hidden="true"><?php echo wp_kses_post( $irrev_mag_items ); ?></span>
+			</div>
+		</div>
+		<header id="masthead" class="site-header bg-zinc-900 text-white py-6">
 			<div class="container flex justify-between items-center">
 				<div class="site-branding">
 					<?php

@@ -9,10 +9,8 @@
  */
 
 get_header();
+do_action( 'before_main_content' );
 ?>
-
-	<main id="primary" class="site-main">
-
 		<?php
 		while ( have_posts() ) :
 			the_post();
@@ -34,8 +32,7 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 
-	</main><!-- #main -->
-
 <?php
+do_action( 'after_main_content' );
 get_sidebar();
 get_footer();

@@ -3,7 +3,7 @@
  * Template Name: Testing
  * Description: A page template for testing things out.
  *
- * @package Irrev_Mag
+ * @package IRREV-MAG
  */
 
 get_header();

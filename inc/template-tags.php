@@ -74,7 +74,7 @@ if ( ! function_exists( 'irrev_mag_posted_on' ) ) :
 
 		$posted_on = sprintf(
 			/* translators: %s: post date. */
-			esc_html_x( 'Posted on %s', 'post date', 'im' ),
+			esc_html_x( 'Publicado em %s', 'post date', 'im' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
@@ -89,11 +89,60 @@ if ( ! function_exists( 'irrev_mag_posted_by' ) ) :
 	function irrev_mag_posted_by() {
 		$byline = sprintf(
 			/* translators: %s: post author. */
-			esc_html_x( 'by %s', 'post author', 'im' ),
+			esc_html_x( 'Por %s', 'post author', 'im' ),
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
 		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	}
+endif;
+
+if ( ! function_exists( 'irrev_mag_reading_time' ) ) :
+	/**
+	 * Display estimated reading time for the current post.
+	 *
+	 * Based on an average reading speed of 200 words per minute.
+	 */
+	function irrev_mag_reading_time() {
+		$content    = get_post_field( 'post_content', get_the_ID() );
+		$word_count = str_word_count( wp_strip_all_tags( $content ) );
+		$minutes    = max( 1, (int) ceil( $word_count / 200 ) );
+
+		printf(
+			'<span class="reading-time">%s</span>',
+			sprintf(
+				/* translators: %d: number of minutes. */
+				esc_html( _n( '%d min de leitura', '%d min de leitura', $minutes, 'im' ) ),
+				absint( $minutes )
+			)
+		);
+	}
+endif;
+
+if ( ! function_exists( 'irrev_mag_post_categories' ) ) :
+	/**
+	 * Display the post categories as a comma-separated list.
+	 */
+	function irrev_mag_post_categories() {
+		$categories = get_the_category();
+
+		if ( empty( $categories ) ) {
+			return;
+		}
+
+		$links = array();
+		foreach ( $categories as $category ) {
+			$links[] = sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( get_category_link( $category->term_id ) ),
+				esc_html( $category->name )
+			);
+		}
+
+		printf(
+			'<span class="cat-links">%s</span>',
+			implode( ', ', $links ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		);
 	}
 endif;
 
@@ -171,8 +220,10 @@ if ( ! function_exists( 'irrev_mag_post_thumbnail' ) ) :
 
 		if ( is_singular() ) :
 			?>
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail(); ?>
+			<div class="post-thumbnail  bg-zinc-100 bg-gradient-to-b from-zinc-900 from-[200px] to-zinc-100 to-[200px] py-10">
+				<div class="container">
+					<?php the_post_thumbnail(); ?>
+				</div>
 			</div><!-- .post-thumbnail -->
 		<?php else : ?>
 			<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
