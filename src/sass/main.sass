@@ -1,0 +1,45 @@
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+@import 'base'
+
+// Custom styles.
+
+.irrev-hero
+	position: relative
+	width: 100%
+	height: 100vh
+	height: 100dvh
+	overflow: hidden
+
+	&__img
+		display: block
+		width: 100%
+		height: 100%
+		object-fit: cover
+		object-position: center
+
+.site-branding
+	.custom-logo-link
+		@apply block max-w-40
+
+#primary-menu
+	@apply flex items-center gap-x-4
+
+// Theme toggle button.
+.theme-toggle
+	@apply cursor-pointer text-xl leading-none
+	background: none
+	border: none
+	color: inherit
+
+	&__icon--dark
+		display: none
+
+	.dark &
+		.theme-toggle__icon--light
+			display: none
+
+		.theme-toggle__icon--dark
+			display: inline
