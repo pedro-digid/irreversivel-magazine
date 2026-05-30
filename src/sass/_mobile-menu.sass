@@ -1,0 +1,54 @@
+// Mobile menu panel.
+.mobile-menu
+	position: fixed
+	inset: 0
+	z-index: 9999
+
+	&__overlay
+		position: absolute
+		inset: 0
+		background: rgba(0, 0, 0, 0.6)
+
+	&__panel
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		width: 100%
+		max-width: 700px
+		height: 100vh
+		height: 100dvh
+		overflow-y: auto
+		@apply bg-zinc-900 text-zinc-50 p-6 flex flex-col
+
+	&__header
+		display: flex
+		justify-content: flex-end
+		@apply mb-8
+
+	&__close
+		@apply text-3xl text-zinc-400 hover:text-zinc-50 cursor-pointer leading-none
+		background: none
+		border: none
+
+	&__nav
+		ul
+			@apply flex flex-col gap-1
+			list-style: none
+			padding: 0
+			margin: 0
+
+		li a
+			@apply block py-3 px-2 font-display uppercase text-lg tracking-wide text-zinc-300 hover:text-zinc-50 transition-colors
+
+		li.current-menu-item a
+			@apply text-primary
+
+// Hamburger button.
+.mobile-menu-toggle
+	@apply relative w-8 h-6 cursor-pointer flex flex-col justify-between
+	background: none
+	border: none
+
+	&__bar
+		@apply block w-full h-0.5 bg-white rounded transition-transform

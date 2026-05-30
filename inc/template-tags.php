@@ -277,7 +277,7 @@ if ( ! function_exists( 'irrev_mag_hero_picture' ) ) :
 				<?php endif; ?>
 
 				<img
-					src="<?php echo esc_url( $landscape_src ); ?>"
+					src="https://placehold.co/800?text=Hello+World&font=roboto"
 					srcset="<?php echo esc_attr( $landscape_srcset ); ?>"
 					sizes="100vw"
 					alt="<?php echo esc_attr( $alt ); ?>"
@@ -299,16 +299,5 @@ if ( ! function_exists( 'irrev_mag_hero_picture' ) ) :
 			</script>
 		</section>
 		<?php
-	}
-endif;
-
-if ( ! function_exists( 'wp_body_open' ) ) :
-	/**
-	 * Shim for sites older than 5.2.
-	 *
-	 * @link https://core.trac.wordpress.org/ticket/12563
-	 */
-	function wp_body_open() {
-		do_action( 'wp_body_open' );
 	}
 endif;

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package testing
+ * @package IRREV-MAG
  */
 
 ?>
@@ -54,7 +54,7 @@
 				sprintf(
 					wp_kses(
 						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'testing' ),
+						__( 'Continuar a ler<span class="screen-reader-text"> "%s"</span>', 'testing' ),
 						array(
 							'span' => array(
 								'class' => array(),
@@ -67,7 +67,7 @@
 
 			wp_link_pages(
 				array(
-					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'testing' ),
+					'before' => '<div class="page-links">' . esc_html__( 'Páginas:', 'im' ),
 					'after'  => '</div>',
 				)
 			);

@@ -9,3 +9,4 @@ import '../sass/main.sass';
 import './modules/smooth-scroll';
 import './modules/sliders';
 import './modules/dark-mode';
+import './modules/mobile-menu';
